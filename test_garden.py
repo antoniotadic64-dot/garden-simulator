@@ -205,3 +205,35 @@ def test_aufgabe_3_harvest_tomato_prints_message(capsys):
 
     captured = capsys.readouterr()
     assert "created file 'tomato.txt'" in captured.out.lower()
+
+
+def test_aufgabe_4_potatoe_can_be_harvested_after_two_water_day_cycles():
+    garden = create_garden(1, 1)
+    assert dig(garden, 0, 0) is True
+    assert plant(garden, 0, 0, "potatoe") is True
+
+    assert water(garden, 0, 0) is True
+    assert advance_day(garden) is True
+    assert harvest(garden, 0, 0) is None
+
+    assert water(garden, 0, 0) is True
+    assert advance_day(garden) is True
+    assert harvest(garden, 0, 0) == "potatoe"
+
+
+def test_BONUS_harvest_carrot():
+    garden = create_garden(1, 1)
+    assert dig(garden, 0, 0) is True
+    assert plant(garden, 0, 0, "carrot") is True
+
+    assert water(garden, 0, 0) is True
+    assert advance_day(garden) is True
+    assert harvest(garden, 0, 0) is None
+
+    assert water(garden, 0, 0) is True
+    assert advance_day(garden) is True
+    assert harvest(garden, 0, 0) is None
+
+    assert water(garden, 0, 0) is True
+    assert advance_day(garden) is True
+    assert harvest(garden, 0, 0) == "carrot"

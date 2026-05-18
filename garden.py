@@ -71,12 +71,18 @@ def water(garden, row, col):
 def advance_day(garden):
     if not garden:
         return True
+    
+    ripe_days = RIPE_DAYS_FROM_SEED
 
     for row in garden:
         for cell in row:
             if cell["state"] == "seed" and cell["water"] >= GROWTH_WATER_NEEDED:
                 cell["days_as_seed"] += 1
-                if cell["days_as_seed"] >= RIPE_DAYS_FROM_SEED:
+                
+                if cell["crop"] == "potatoe":
+                    ripe_days = 2
+                
+                if cell["days_as_seed"] >= ripe_days:
                     cell["state"] = "ripe"
             cell["water"] -= 1
 
