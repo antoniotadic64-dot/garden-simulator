@@ -10,11 +10,11 @@
         "ms-python.vscode-pylance"
       ],
       "settings": {
-        "workbench.colorTheme": "Dark Modern"
+        "workbench.colorTheme": "Dark Modern",
+        "chat.disableAIFeatures": false
       }
     }
   },
-  
-  "postCreateCommand": "code --uninstall-extension github.copilot-chat --force || true; code --uninstall-extension github.copilot --force || true",
-  "postAttachCommand": "code --uninstall-extension github.copilot-chat --force || true; code --uninstall-extension github.copilot --force || true"
+
+  "postCreateCommand": "code --uninstall-extension github.copilot-chat --force || true"
 }
