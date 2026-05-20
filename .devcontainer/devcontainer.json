@@ -16,10 +16,12 @@
         "github.copilot.nextEditSuggestions.enabled": false,
         "github.copilot.nextEditSuggestions.fixes": false,
         "editor.inlineSuggest.enabled": false,
-        "editor.suggest.preview": false
+        "editor.suggest.preview": false,
+
+        "editor.defaultFormatter": null,
+        "editor.formatOnSave": false
       }
     }
-  },
-
-  "postCreateCommand": "code --uninstall-extension github.copilot-chat --force || true"
+  }
+  // "postCreateCommand": "code --uninstall-extension github.copilot-chat --force || true"
 }
