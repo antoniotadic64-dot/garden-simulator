@@ -1,6 +1,7 @@
 from pathlib import Path
 from datetime import datetime
 
+
 WATER_MAX = 1
 GROWTH_WATER_NEEDED = 1
 RIPE_DAYS_FROM_SEED = 3
@@ -43,16 +44,31 @@ def dig(garden, row, col):
 
 
 def plant(garden, row, col, crop):
+#    global WATER_MAX
+#    global GROWTH_WATER_NEEDED
+#    global RIPE_DAYS_FROM_SEED
     cell = get_cell(garden, row, col)
     if cell is None:
         return False
     if cell["state"] != "hole":
         return False
+#    if crop == "potato":
+#        WATER_MAX =+ 1
+#        GROWTH_WATER_NEEDED =+ 1
+#        RIPE_DAYS_FROM_SEED =- 1
+    
+#    else:
+#        WATER_MAX = 1
+#        GROWTH_WATER_NEEDED = 1
+#        RIPE_DAYS_FROM_SEED = 3
 
     cell["state"] = "seed"
     cell["crop"] = crop
     cell["water"] = 0
-    cell["days_as_seed"] = 0
+    if crop == "potato":
+        cell["days_as_seed"] = 1
+    else:
+        cell["days_as_seed"] = 0
     return True
 
 
@@ -98,6 +114,8 @@ def harvest(garden, row, col):
 
     if harvested_crop == "tomato":
         create_tomato_harvest_file()
+    else:
+        print("[Info] The crop", harvested_crop, "has no file entry.")
 
     return harvested_crop
 
@@ -113,5 +131,6 @@ def create_tomato_harvest_file():
     line = f"harvested 1 tomato {current_datetime}\n"
     with target_file.open("a", encoding="utf-8") as file:
         file.write(line)
+    print("Created file 'tomato.txt' at", current_datetime)
 
     ### Aufgabe 3 Ende
